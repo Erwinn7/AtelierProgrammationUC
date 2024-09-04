@@ -16,6 +16,8 @@ def montant_affranchissement(poidsLettre, typeLettre,zoneLettre):
     montantBase = 0.0 
     dicUtiliser = {}
     listDesPoids =[]
+    poidsTrouve = 0.0
+        
     
     # verifions le type de lettre existe et choisissons le dictionnaire à utiliser
     if typeLettre in listTypeLettre:
@@ -33,8 +35,7 @@ def montant_affranchissement(poidsLettre, typeLettre,zoneLettre):
         listDesPoids.remove("OM1")
         listDesPoids.remove("OM2")
    
-        poidsTrouve = 0
-        
+      
         for elements in listDesPoids:
             if int(elements) < int(poidsLettre) :
                 poidsTrouve = 0
@@ -48,7 +49,7 @@ def montant_affranchissement(poidsLettre, typeLettre,zoneLettre):
         nombre10gObtenu = nombre_10g(poidsLettre)
         
         # calcul de complement
-        montant = float(montantBase) + float(nombre10gObtenu*montantZone)
+        montant = (montantBase) + (nombre10gObtenu*montantZone)
 
     else :
         print("Type de lettre inconnu, Entrez des valeurs existante svp.")
