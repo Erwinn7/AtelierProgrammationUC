@@ -139,6 +139,21 @@ def test_max():
     lst2test1=[]
     print("le maximum de  ",lst2test1,"est : ", val_max(lst2test1))
     
-test_max()
+# test_max()
 
 #7)
+def ind_max(lstEntier:list)->int:
+    indexSearched = 0
+    if len(lstEntier) != 0:     
+        indexSearched = lstEntier.index(val_max(lstEntier)) 
+    else:
+        # Retourner -1 si la liste est vide
+        indexSearched = -1    
+    return indexSearched
+
+def test_ind_max():
+    print("TEST NOMBRE SUPERIEUR")
+    lst2test1=[1,10,100,999,1,999]
+    print("le maximum de  ",lst2test1,"est : ", ind_max(lst2test1))
+    
+# test_ind_max()
