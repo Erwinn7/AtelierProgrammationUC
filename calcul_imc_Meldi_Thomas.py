@@ -5,7 +5,7 @@ from datetime import date
 # Exercice 1
 
 IMC = {'0': 'Rien',
-    '16.5': 'Dénutrition ou famine',
+       '16.5': 'Dénutrition ou famine',
        '18.5': 'maigreur',
        '25': 'corpulence normale',
        '30': 'surpoids',
