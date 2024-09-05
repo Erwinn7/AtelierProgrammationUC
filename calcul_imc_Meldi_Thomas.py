@@ -4,34 +4,34 @@ from datetime import date
 
 # Exercice 1
 
-IMC = {'0': 'Rien',
-       '16.5': 'Dénutrition ou famine',
-       '18.5': 'maigreur',
-       '25': 'corpulence normale',
-       '30': 'surpoids',
-       '35': 'obésité modéré',
-       '40': 'obésité sévère',
+IMC = {0: 'Rien',
+       16.5: 'Dénutrition ou famine',
+       18.5: 'maigreur',
+       25: 'corpulence normale',
+       30: 'surpoids',
+       35: 'obésité modéré',
+       40: 'obésité sévère',
        math.inf: 'obésité morbide'}
 
 
 def message_imc(imcUtilisateur:float)->str:
     """Prend en paramètre un imc et renvoie son interprétation"""
-    listeDesImc=list(IMC.keys())
+    # listeDesImc=list(IMC.keys())
     count = 0
     message = ''
-    while imcUtilisateur > float(listeDesImc[count]):
+    while imcUtilisateur > (list(IMC.keys())[count]):
         count +=1
-    message = IMC.get(listeDesImc[count])
+    message = IMC.get(list(IMC.keys())[count])
 
     return message
 
-def test_imc():
+def test_imc()->str:
     """Génère aléatoirement 10 IMC pour tester la fonction message_imc"""
     for i in range(0,10):
         imcRandom = random.randrange(0,100)
         print('Pour une IMC de : ', imcRandom , ' Vous êtes en : ', message_imc(imcRandom))
 
-#test_imc()
+test_imc()
 
 
 
@@ -46,7 +46,7 @@ def est_bissextile(annee:int)-> bool:
     else:
         return False
 
-def test_bissextile():
+def test_bissextile()->str:
     """Test la fonction est_bissextile()"""
     print(est_bissextile(2000))
     print(est_bissextile(2100))
@@ -126,23 +126,22 @@ DICTMOIS = {
 }
 
 def date_est_valide(jour:int,mois:int,annee:int)-> bool:
-    """Vérifie si la date est valide (non valide si supérieur à la date d'aujourd'hui ou si date inexistante)"""
+    """Vérifie si la date est valide (non valide si date inexistante)"""
     dateValide = False
     try:
         dateUtilisateur = date(annee,mois,jour)
-        if dateUtilisateur <= date.today():
-            if est_bissextile(dateUtilisateur.year):
-                if dateUtilisateur.month == 2 and 1 <= dateUtilisateur.day <= DICTMOIS.get(dateUtilisateur.month) +1 :
-                    dateValide = True
-                elif  1 <= dateUtilisateur.day <= DICTMOIS.get(dateUtilisateur.month) and dateUtilisateur.month != 2:
-                    dateValide = True
-                else:
-                    dateValide = False
+        if est_bissextile(dateUtilisateur.year):
+            if dateUtilisateur.month == 2 and 1 <= dateUtilisateur.day <= DICTMOIS.get(dateUtilisateur.month) +1 :
+                dateValide = True
+            elif  1 <= dateUtilisateur.day <= DICTMOIS.get(dateUtilisateur.month) and dateUtilisateur.month != 2:
+                dateValide = True
             else:
-                
-                if  1 <= dateUtilisateur.month <=12:
-                    if 1 <= dateUtilisateur.day <= DICTMOIS.get(dateUtilisateur.month):
-                        dateValide = True
+                dateValide = False
+        else:
+            
+            if  1 <= dateUtilisateur.month <=12:
+                if 1 <= dateUtilisateur.day <= DICTMOIS.get(dateUtilisateur.month):
+                    dateValide = True
     except ValueError:
         dateValide = False    
    

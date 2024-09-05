@@ -124,16 +124,20 @@ def test_moy_sup():
 # 6)
 def val_max(L:list)->int:
     """retourne la valeur maximale de la liste l"""
-    maxVal = 0
     if len(L)!=0:
-        maxVal = max(L)
-    return max(L)
+        maxVal = L[0]
+        for i in range(1,len(L)):
+            if maxVal < L[i]:
+                maxVal = L[i]
+    else :
+        maxVal = 0
+        
+    return maxVal
 
 def test_max():
     print("TEST NOMBRE SUPERIEUR")
-    print("Test liste vide : ", moy_sup([],10000000))
-    lst2test1=[1,10,100,999999, 1000]
-    print("le maximum de  ",lst2test1,"est : ", max(lst2test1))
+    lst2test1=[]
+    print("le maximum de  ",lst2test1,"est : ", val_max(lst2test1))
     
 test_max()
 
