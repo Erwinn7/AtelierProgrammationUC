@@ -1,4 +1,4 @@
-# ESSENTIELS 
+
 # Exercice 1
 
 # 1)
