@@ -14,17 +14,17 @@ def separer(lstEntier:list)-> list:
     --------
     list
         Une nouvelle liste où les entiers négatifs sont placés au début et les entiers
-        positifs à la fin. L'ordre des éléments négatifs et positifs dans la nouvelle 
+        positifs à la fin. L'ordre des éléments négatifs et positifs dans la nouvelle
         liste n'est pas garanti d'être le même que dans la liste d'origine. """
 
-    
+
     lenLstEntier = len(lstEntier)
     positiveIndex = lenLstEntier -1
-    negativeIndex = 0 
-    # on initialise la liste avec des 0 comme c'est une liste d'entier 
-    LstLSEP = [0]*lenLstEntier 
+    negativeIndex = 0
+    # on initialise la liste avec des 0 comme c'est une liste d'entier
+    LstLSEP = [0]*lenLstEntier
 
-    
+
     for elt in lstEntier:
         if elt < 0 :
             LstLSEP[negativeIndex] = elt
@@ -32,8 +32,7 @@ def separer(lstEntier:list)-> list:
         elif elt > 0 :
             LstLSEP[positiveIndex] = elt
             positiveIndex -= 1
-    
+
     return LstLSEP
 
-print(separer([3, -2, -1, 5, -3, 4]))
-            
+# print(separer([3, -2, -1, 5, -3, 4]))
