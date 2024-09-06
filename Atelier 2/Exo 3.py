@@ -21,9 +21,8 @@ def separer(lstEntier:list)-> list:
     lenLstEntier = len(lstEntier)
     positiveIndex = lenLstEntier -1
     negativeIndex = 0
-    # on initialise la liste avec des 0 comme c'est une liste d'entier
+    # on initialise la liste avec des 0 comme c'est une liste d'entier et la liste a la même taille que lstEntier
     LstLSEP = [0]*lenLstEntier
-
 
     for elt in lstEntier:
         if elt < 0 :
@@ -35,4 +34,4 @@ def separer(lstEntier:list)-> list:
 
     return LstLSEP
 
-# print(separer([3, -2, -1, 5, -3, 4]))
+print(separer([3, -2,0, -1, 5, -3, 4,0,0]))
