@@ -156,4 +156,4 @@ def test_ind_max():
     lst2test1=[1,10,100,999,1,999]
     print("le maximum de  ",lst2test1,"est : ", ind_max(lst2test1))
     
-# test_ind_max()
+test_ind_max()
