@@ -36,7 +36,7 @@ def test_full_name()-> None:
     print(full_name("totO BourGET ANDré"))
 
 
-def verif_corps_or_domaine_ok(chaine:str)-> bool:
+def is_chaine_ok(chaine:str)-> bool:
     """verifie si la chaine respecte ces conditions : 
     - ne doit pas contenir ‘.’ en premier ou dernier caractère
     - ne doit pas contenir deux ‘.’ concécutifs
@@ -71,9 +71,9 @@ def is_mail(leMail:str)->tuple:
     if leMail.find("@") != -1 :
         # NB : erreur non gérer pour deux occurence de @ pour respecter les codes erreurs spécifiés
             corps, domaine = leMail.split("@")
-            if not verif_corps_or_domaine_ok(corps):
+            if not is_chaine_ok(corps):
                 resultat = (0,1)
-            elif not verif_corps_or_domaine_ok(domaine) :
+            elif not is_chaine_ok(domaine) :
                 resultat = (0,3)
             elif domaine.find(".") == -1 :
                 resultat = (0,4)
