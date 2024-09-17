@@ -59,28 +59,66 @@ def longueur(lstElts:list)->int:
 
 def minimum(lstElts:list)->int:
     """_summary_
-
-    Args:
-        lstElts (list): _description_
-
-    Returns:
-        int: _description_
+ 
     """
     result = 0 
     if lstElts :
         element = 0
         if len(lstElts) == 1:
             result = lstElts[0]
-        elif len(lstElts) > 1 and lstElts[-1] > lstElts[0] : 
+        elif lstElts[-1] > lstElts[0] : 
             element = lstElts[-1]
             lstElts.remove(element)
-            minimum(lstElts)
-        elif len(lstElts) > 1 and  lstElts[-1] <  lstElts[0] :
+            result = minimum(lstElts)
+        elif lstElts[-1] <  lstElts[0] :
             element = lstElts[0]
             lstElts.remove(element)
-            minimum(lstElts)
+            result = minimum(lstElts)
     
     return result
+
+
+def listPairs (lstElts:list[int])->list[int]:
+    """_summary_
+
+    Args:
+        lstElts (list[int]): _description_
+
+    Returns:
+        list[int]: _description_
+    """
+    lstPairsElts = []
+    
+    if lstElts :
+        if lstElts[0]%2 == 0 :
+            lstPairsElts.append(lstElts[0])
+            
+        lstPairsElts += listPairs(lstElts[1:])
+
+    return lstPairsElts
+            
+
+def concat_list(LstOfLst: list) -> list :
+    """_summary_
+
+    Args:
+        LstOfLst (list): _description_
+
+    Returns:
+        list: _description_
+    """
+    lstSimple = []
+    if LstOfLst :
+        if LstOfLst[0]:
+            lstSimple.extend(LstOfLst[0])
+            
+        lstSimple += concat_list(LstOfLst[1:])
+        
+    return lstSimple
+    
+
+    
+    
 
 
 def main():
@@ -102,12 +140,20 @@ def main():
     
     
     # Test de la fonction
-    liste1 = [1, 2, 3, 4, 5]
-    resultat1 = minimum(liste1)
-    print("La somme de la liste est :", resultat1)
-    liste2 = []
-    resultat2 = minimum(liste2)
-    print("La somme de la liste est :", resultat2)
+    # liste1 = [3, 5,4 , 50]
+    # resultat1 = listPairs(liste1)
+    # print("La somme de la liste est :", resultat1)
+    # liste2 = []
+    # resultat2 = listPairs(liste2)
+    # print("La somme de la liste est :", resultat2)
+    
+    
+    # Test de la fonction
+    print(concat_list([[0,1],[2,3],[4],[6,7]]))
+    [0,1,2,3,4,6,7]
+    # Test de la fonction
+    print(concat_list(["Ceci est ","un test ", "de la ", "concatenation"]))
+    # "Ceci est un test de la concatenation"
    
 
 if __name__ == "__main__":
