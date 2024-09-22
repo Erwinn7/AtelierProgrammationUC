@@ -1,0 +1,5 @@
+package test_serialization;
+
+public class Entity2D {
+
+}

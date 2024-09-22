@@ -1,0 +1,28 @@
+package exercice1;
+
+public class Robot {
+	
+	private String referenceRobot;
+	private String nomRobot;
+	private int x;
+	private int y;
+	private static int nombreDeRobot = 1;
+	
+	private static final int NORD = 1;
+	private static final int SUD = 2;
+	private static final int EST = 3;
+	private static final int OUEST = 4;
+
+			
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub	
+		 
+
+		 
+		 
+		 
+
+	}
+
+}
