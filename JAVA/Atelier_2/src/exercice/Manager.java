@@ -1,0 +1,77 @@
+package exercice;
+
+import java.time.LocalDate;
+import java.time.Period;
+
+public class Manager extends Employe {
+	
+	private Secretaire secretaireAssocie;
+	
+	private Manager(String leNom, String lePrenom, LocalDate laDate, Adresse lAdresse, double leSalaire, LocalDate laDateEmbauche) {
+        super(leNom, lePrenom, laDate, lAdresse, leSalaire, laDateEmbauche);
+        
+    }
+	
+	public static Manager createEmploye(String leNom,String lePrenom, LocalDate laDate, Adresse lAdresse, double leSalaire, LocalDate laDateEmbauche) {
+	    LocalDate now = LocalDate.now();
+	    int age = Period.between(laDate, now).getYears(); 
+
+	    if (age >= 16 && age < 65) {
+          
+	    	return new Manager(leNom, lePrenom, laDate, lAdresse, leSalaire, laDateEmbauche);
+
+	    } else {
+            System.err.println("L'âge de la personne doit être entre 16 et 65 ans.");
+            return null; 
+        }
+		
+		
+	}
+	
+	
+	@Override
+    public void augmenterLeSalaire(double pourcentage) {
+        if (pourcentage > 0) {
+            // Calcul du bonus basé sur l'annuité (ancienneté)
+            int annuite = this.calculerAnnuite();
+            double bonus = annuite * 0.5; // Bonus de 0.5% par année d'ancienneté
+
+            // On applique l'augmentation de salaire avec le bonus
+            double pourcentageAugTot = pourcentage + bonus;
+            this.setSalaireEmploye(this.getSalaireEmploye()*(pourcentageAugTot / 100));
+
+            System.out.println("Le salaire a été augmenté de " + pourcentage + "% avec un bonus de " + bonus + "% pour l'ancienneté.");
+        } else {
+            System.err.println("Le pourcentage doit être positif !");
+        }
+    }
+	
+	
+	 public void setSecretaire(Secretaire secretaire) {
+	        // On vérifie qu'un manager ne peut pas être sa propre secrétaire
+	        if (secretaire != null ) {
+	            this.secretaireAssocie = secretaire;
+	        } else {
+	            System.err.println("Un manager ne peut pas être sa propre secrétaire !");
+	        }
+	    }
+	
+	
+	
+	
+
+	public Employe getSecretaireAssocie() {
+		return secretaireAssocie;
+	}
+
+	public void setSecretaireAssocie(Secretaire secretaireAssocie) {
+		this.secretaireAssocie = secretaireAssocie;
+	}
+
+	@Override
+	public String toString() {
+		return "Manager [secretaireAssocie=" + secretaireAssocie + "]";
+	}
+	
+
+}

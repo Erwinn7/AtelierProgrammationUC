@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+/home/erwinn/Documents/UNIVERSITE_DE_CORSE/ATELIERS_PROG/JAVA/.metadata/.plugins/org.eclipse.jdt.core
-1865797976.index
-2777310234.index
-105890110.index
